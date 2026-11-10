@@ -1,0 +1,58 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 1 /Kids [4 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 1194 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+54 738 Td
+(BLACKWOOD REGIONAL WATER AUTHORITY - EQUIPMENT DATASHEET) Tj
+T* (DOC REF: BRWA-EQ-DS-P101-REV3   SYSTEM: Transfer Pump P-101 / Tank T-101) Tj
+T* () Tj
+T* (1. TANK T-101 GEOMETRY) Tj
+T* (   Vertical cylinder, internal diameter D = 4.00 m) Tj
+T* (   Cross-sectional area A = pi*\(D/2\)^2 = 12.5664 m^2) Tj
+T* (   High-High \(HiHi\) trip level = 8.50 m) Tj
+T* () Tj
+T* (2. PUMP P-101 DISCHARGE CURVE \(the physical truth\)) Tj
+T* (   pump_status = 1 \(RUNNING\):  outflow = 0.280 m^3/s \(rated, +/- 0.005\)) Tj
+T* (   pump_status = 0 \(STOPPED\):  outflow = 0.000 m^3/s  \(check valve CV-101 seated\)) Tj
+T* (   A non-zero outflow logged while pump_status = 0 is physically impossible) Tj
+T* (   and indicates fabricated telemetry. Use THIS curve, not the logged column.) Tj
+T* () Tj
+T* (3. INLET FCV-101) Tj
+T* (   Modulating range 0.000 .. 0.500 m^3/s.) Tj
+T* () Tj
+T* (4. MASS BALANCE) Tj
+T* (   A*\(dh/dt\) = Q_in - Q_out   =>   h\(t+10\) = h\(t\) + \(Q_in - Q_out\)*10 / 12.5664) Tj
+T* (   Integrate from the last trustworthy sample to recover the true level,) Tj
+T* (   then peak_dev = max over time of | h_true\(t\) - hmi_level\(t\) |  \(metres, 2 dp\).) Tj
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000121 00000 n 
+0000000191 00000 n 
+0000000317 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1563
+%%EOF
