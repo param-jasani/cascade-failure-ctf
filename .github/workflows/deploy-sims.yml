@@ -43,7 +43,7 @@ jobs:
         run: |
           set -euo pipefail
           for s in $SITES; do
-            for f in index.html site.css logo.png "sim/$s.js" sim/simui.js; do
+            for f in index.html site.css logo.png "sim/$s.js" sim/simui.js sim/seal.js sim/sealed.json; do
               test -f "$s/$f" || { echo "::error::$s/$f is missing"; exit 1; }
             done
             # every sim module must load and export mount()

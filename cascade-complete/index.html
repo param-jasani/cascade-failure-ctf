@@ -23,23 +23,15 @@
   </header>
 
   <main>
-    <div id="flag" class="flag-banner" role="status" aria-live="polite"></div>
     <div id="sim-root">Loading simulator…</div>
   </main>
 
   <script type="module">
     import { mount } from "./sim/cascade-complete.js";
     const root = document.getElementById("sim-root");
-    const banner = document.getElementById("flag");
     root.textContent = "";
-    mount(root, {
-      onReveal(answer) {
-        banner.innerHTML = "<small>Challenge solved. Submit this flag</small>";
-        banner.appendChild(document.createTextNode("HXN{" + answer + "}"));
-        banner.classList.add("show");
-        banner.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      },
-    });
+    // No banner: the player decodes the exfil message from the captured signal themselves.
+    mount(root, { onReveal() {} });
   </script>
 </body>
 </html>

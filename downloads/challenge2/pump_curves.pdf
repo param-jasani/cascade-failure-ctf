@@ -13,7 +13,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 1194 >>
+<< /Length 910 >>
 stream
 BT
 /F1 10 Tf
@@ -22,24 +22,20 @@ BT
 (BLACKWOOD REGIONAL WATER AUTHORITY - EQUIPMENT DATASHEET) Tj
 T* (DOC REF: BRWA-EQ-DS-P101-REV3   SYSTEM: Transfer Pump P-101 / Tank T-101) Tj
 T* () Tj
-T* (1. TANK T-101 GEOMETRY) Tj
-T* (   Vertical cylinder, internal diameter D = 4.00 m) Tj
-T* (   Cross-sectional area A = pi*\(D/2\)^2 = 12.5664 m^2) Tj
-T* (   High-High \(HiHi\) trip level = 8.50 m) Tj
+T* (1. TANK T-101) Tj
+T* (   Vertical cylinder, internal diameter 4.00 m, straight side 10.0 m.) Tj
+T* (   High-High \(HiHi\) trip level 8.50 m. Overflow weir 9.60 m.) Tj
 T* () Tj
-T* (2. PUMP P-101 DISCHARGE CURVE \(the physical truth\)) Tj
-T* (   pump_status = 1 \(RUNNING\):  outflow = 0.280 m^3/s \(rated, +/- 0.005\)) Tj
-T* (   pump_status = 0 \(STOPPED\):  outflow = 0.000 m^3/s  \(check valve CV-101 seated\)) Tj
-T* (   A non-zero outflow logged while pump_status = 0 is physically impossible) Tj
-T* (   and indicates fabricated telemetry. Use THIS curve, not the logged column.) Tj
+T* (2. PUMP P-101 \(fixed speed, discharge to clearwell\)) Tj
+T* (   Duty point: 0.280 m^3/s at 18 m TDH \(tolerance +/- 0.005 m^3/s\).) Tj
+T* (   Check valve CV-101 on discharge: no reverse or residual flow when stopped.) Tj
 T* () Tj
 T* (3. INLET FCV-101) Tj
-T* (   Modulating range 0.000 .. 0.500 m^3/s.) Tj
+T* (   Modulating, 0.000 .. 0.500 m^3/s. Magnetic flow meter FT-101, +/- 0.5 %.) Tj
 T* () Tj
-T* (4. MASS BALANCE) Tj
-T* (   A*\(dh/dt\) = Q_in - Q_out   =>   h\(t+10\) = h\(t\) + \(Q_in - Q_out\)*10 / 12.5664) Tj
-T* (   Integrate from the last trustworthy sample to recover the true level,) Tj
-T* (   then peak_dev = max over time of | h_true\(t\) - hmi_level\(t\) |  \(metres, 2 dp\).) Tj
+T* (4. INSTRUMENTATION NOTES) Tj
+T* (   LT-101 level transmitter feeds the PLC; HMI-01 displays the PLC tag.) Tj
+T* (   P-101 discharge flow is not metered; the PLC logs a calculated value.) Tj
 ET
 endstream
 endobj
@@ -54,5 +50,5 @@ xref
 trailer
 << /Size 6 /Root 1 0 R >>
 startxref
-1563
+1278
 %%EOF
