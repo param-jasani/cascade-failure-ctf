@@ -1,23 +1,14 @@
-# --- CTF secrets: NEVER publish to a public Pages repo ---
-# Plaintext flags, canonical answers, and the blob builder that reads them.
-data/answers.py
-data/build_blobs.py
-data/crypto_common.py
-# Solver / generator / tooling scripts (spoilers).
-data/*.py
+# --- CTF secrets: keep out of the public repo ---
+# Answer key, generators and solvers (spoilers).
+data/
+# Maintainer README (answers + flags) and solution writeups.
+README.md
+writeups/
+*.zip
+
 # Compiled Python.
-data/__pycache__/
 **/__pycache__/
 *.pyc
-
-# Maintainer README: contains plaintext flags, canonical answers, and full
-# solutions. PRIVATE — do not publish. (The public landing page is index.html.)
-README.md
-
-# Full solution writeups (publish after the event, if ever).
-writeups/
-writeups.zip
-*.zip
 
 # OS / editor junk
 .DS_Store
