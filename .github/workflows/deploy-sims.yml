@@ -1,0 +1,78 @@
+name: Deploy sim sites
+
+# Publishes the three standalone simulator sites to GitHub Pages, each at its own URL:
+#   https://<owner>.github.io/<repo>/ghost-rung/
+#   https://<owner>.github.io/<repo>/cascade-complete/
+#   https://<owner>.github.io/<repo>/hot-standby/
+# Only these three folders are published. Nothing is served at the site root, and the
+# downloads, data and writeups are never uploaded.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "ghost-rung/**"
+      - "cascade-complete/**"
+      - "hot-standby/**"
+      - ".github/workflows/deploy-sims.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  SITES: "ghost-rung cascade-complete hot-standby"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Check each site
+        run: |
+          set -euo pipefail
+          for s in $SITES; do
+            for f in index.html site.css logo.png "sim/$s.js" sim/simui.js; do
+              test -f "$s/$f" || { echo "::error::$s/$f is missing"; exit 1; }
+            done
+            # every sim module must load and export mount()
+            node --input-type=module -e "
+              const m = await import('./$s/sim/$s.js');
+              if (typeof m.mount !== 'function') { console.error('$s: no mount() export'); process.exit(1); }
+              console.log('ok $s');"
+          done
+
+      - name: Assemble site
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+          for s in $SITES; do cp -r "$s" "_site/$s"; done
+          touch _site/.nojekyll
+          find _site -type f | sort
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
